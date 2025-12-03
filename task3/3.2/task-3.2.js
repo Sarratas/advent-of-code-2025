@@ -1,6 +1,5 @@
 import fs from 'node:fs';
 
-
 const exec = async () => {
     const data = fs.readFileSync('./task3/3.2/data.txt', 'utf8');
 
@@ -8,11 +7,10 @@ const exec = async () => {
 
     let result = 0;
     for (const row of rows) {
-        let maxes = [], maxIndexes = [];
+        let maxIndexes = [];
         let sum = "";
         for (let limit = 11, i = 0; limit >= 0; --limit, ++i) {
-            const [ max, maxIndex ] = findMax(i != 0 ? maxIndexes[i - 1] + 1 : 0, row.length - limit, row);
-            maxes.push(max);
+            const [ max, maxIndex ] = findMax(i != 0 ? maxIndexes[i - 1] + 1 : 0, row.length - limit, row);;
             maxIndexes.push(maxIndex);
 
             sum += max; // concat
@@ -20,7 +18,6 @@ const exec = async () => {
 
         result += Number(sum);
     }
-
 
     console.log(result);
 }

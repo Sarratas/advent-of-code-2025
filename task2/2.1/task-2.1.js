@@ -1,6 +1,5 @@
 import fs from 'node:fs';
 
-
 const exec = async () => {
     const data = fs.readFileSync('./task2/2.1/data.txt', 'utf8');
 
