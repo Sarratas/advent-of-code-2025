@@ -1,24 +1,5 @@
 import fs from 'node:fs';
 
-const exec = async () => {
-    const data = fs.readFileSync('./task4/4.1/data.txt', 'utf8');
-
-    const arr = data.split(/\r?\n/).map(row => row.split(''));
-
-    let result = 0;
-    for (let i = 0; i < arr.length; ++i) {
-        for (let j = 0; j < arr[i].length; ++j) {
-            if (arr[i][j] != '@') continue;
-
-            if (countAdj(arr, i, j) < 4) {
-                result += 1;
-            }
-        }
-    }
-
-    console.log(result);
-}
-
 const countAdj = (arr, row, column) => {
     let res = 0;
     for (let i = row - 1; i <= row + 1; ++i) {
@@ -33,4 +14,19 @@ const countAdj = (arr, row, column) => {
     return res;
 }
 
-exec();
+const data = fs.readFileSync('./task4/4.1/data.txt', 'utf8');
+
+const arr = data.split(/\r?\n/).map(row => row.split(''));
+
+let result = 0;
+for (let i = 0; i < arr.length; ++i) {
+    for (let j = 0; j < arr[i].length; ++j) {
+        if (arr[i][j] != '@') continue;
+
+        if (countAdj(arr, i, j) < 4) {
+            result += 1;
+        }
+    }
+}
+
+console.log(result);

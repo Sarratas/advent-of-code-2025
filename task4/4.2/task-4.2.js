@@ -1,21 +1,5 @@
 import fs from 'node:fs';
 
-const exec = async () => {
-    const data = fs.readFileSync('./task4/4.2/data.txt', 'utf8');
-
-    const arr = data.split(/\r?\n/).map(row => row.split(''));
-
-    let removed = removeRolls(arr);
-    let result = removed;
-
-    while (removed > 0) {
-        removed = removeRolls(arr);
-        result += removed;
-    }
-
-    console.log(result);
-}
-
 const removeRolls = (arr) => {
     let res = 0;
     for (let i = 0; i < arr.length; ++i) {
@@ -46,4 +30,16 @@ const countAdj = (arr, row, column) => {
     return res;
 }
 
-exec();
+const data = fs.readFileSync('./task4/4.2/data.txt', 'utf8');
+
+const arr = data.split(/\r?\n/).map(row => row.split(''));
+
+let removed = removeRolls(arr);
+let result = removed;
+
+while (removed > 0) {
+    removed = removeRolls(arr);
+    result += removed;
+}
+
+console.log(result);

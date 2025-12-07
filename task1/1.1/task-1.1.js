@@ -1,28 +1,23 @@
 import fs from 'node:fs';
 
-const exec = async () => {
-    const data = fs.readFileSync('./task1/1.1/data.txt', 'utf8');
+const data = fs.readFileSync('./task1/1.1/data.txt', 'utf8');
 
-    const rows = data.split(/\r?\n/);
-    console.log(rows);
+const rows = data.split(/\r?\n/);
 
-    let value = 50;
-    let result = 0;
-    for (const row of rows) {
-        const direction = row.at(0);
-        const amount = Number(row.slice(1));
-        value = direction == "L" ? value - amount : value + amount;
-        value = value % 100;
-        if (value < 0) {
-            value = 100 + value;
-        }
-
-        if (value === 0) {
-            result += 1;
-        }
+let value = 50;
+let result = 0;
+for (const row of rows) {
+    const direction = row.at(0);
+    const amount = Number(row.slice(1));
+    value = direction == "L" ? value - amount : value + amount;
+    value = value % 100;
+    if (value < 0) {
+        value = 100 + value;
     }
 
-    console.log(result);
+    if (value === 0) {
+        result += 1;
+    }
 }
 
-exec();
+console.log(result);
