@@ -3,7 +3,7 @@ import fs from 'node:fs';
 const exec = async () => {
     const data = fs.readFileSync('./task7/7.1/data.txt', 'utf8');
 
-    const rows = data.trim().split("\n").map(e => e.split(''));
+    const rows = data.trim().split(/\r?\n/).map(e => e.split(''));
     const rays = new Map();
     const startingPos = rows[0].findIndex(e => e === "S");
     rays.set(startingPos, 1);

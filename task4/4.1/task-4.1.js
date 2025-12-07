@@ -3,7 +3,7 @@ import fs from 'node:fs';
 const exec = async () => {
     const data = fs.readFileSync('./task4/4.1/data.txt', 'utf8');
 
-    const arr = data.split("\r\n").map(row => row.split(''));
+    const arr = data.split(/\r?\n/).map(row => row.split(''));
 
     let result = 0;
     for (let i = 0; i < arr.length; ++i) {

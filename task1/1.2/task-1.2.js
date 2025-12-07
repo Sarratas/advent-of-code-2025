@@ -3,7 +3,7 @@ import fs from 'node:fs';
 const exec = async () => {
     const data = fs.readFileSync('./task1/1.2/data.txt', 'utf8');
 
-    const rows = data.split("\n");
+    const rows = data.split(/\r?\n/);
     console.log(rows);
 
     let value = 50;

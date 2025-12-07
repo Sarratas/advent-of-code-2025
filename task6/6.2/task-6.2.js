@@ -3,12 +3,11 @@ import fs from 'node:fs';
 const exec = async () => {
     const data = fs.readFileSync('./task6/6.2/data.txt', 'utf8');
 
-    const rows = data.split("\n").map(line => line.split(''));
+    const rows = data.split(/\r?\n/).map(line => line.split(''));
     let calculationIndex = 0;
     const calculations = [];
     for (let j = 0; j < rows[0].length; ++j) {
         let number = '';
-        let hasContent = false;
         if (!calculations[calculationIndex]) {
             calculations[calculationIndex] = [];
         }
@@ -17,8 +16,6 @@ const exec = async () => {
             const value = rows[i][j];
             if (value == ' ')  {
                 continue;
-            } else {
-                hasContent = true;
             }
             if (['*', '+'].includes(rows[i][j])) {
                 calculations[calculationIndex].push(rows[i][j]);
@@ -28,7 +25,7 @@ const exec = async () => {
             number += rows[i][j];
         }
         
-        if (!hasContent) {
+        if (number == '') {
             calculationIndex += 1;
             continue;
         }

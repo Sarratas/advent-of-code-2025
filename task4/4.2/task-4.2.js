@@ -3,7 +3,7 @@ import fs from 'node:fs';
 const exec = async () => {
     const data = fs.readFileSync('./task4/4.2/data.txt', 'utf8');
 
-    const arr = data.split("\r\n").map(row => row.split(''));
+    const arr = data.split(/\r?\n/).map(row => row.split(''));
 
     let removed = removeRolls(arr);
     let result = removed;

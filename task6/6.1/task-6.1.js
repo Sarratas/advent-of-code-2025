@@ -3,7 +3,7 @@ import fs from 'node:fs';
 const exec = async () => {
     const data = fs.readFileSync('./task6/6.1/data.txt', 'utf8');
 
-    const rows = data.trim().split("\n").map(line => line.split(/\s+/));
+    const rows = data.trim().split(/\r?\n/).map(line => line.split(/\s+/));
     const calculations = [];
     rows.forEach((row) => {
         row.forEach((value, index) => {
@@ -23,7 +23,7 @@ const exec = async () => {
         }
         return result;
     })
-console.log(results.reverse())
+
     const result = results.reduce((acc, result) => acc + result);
 
     console.log(result);

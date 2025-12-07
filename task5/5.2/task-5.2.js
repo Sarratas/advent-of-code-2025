@@ -3,7 +3,7 @@ import fs from 'node:fs';
 const exec = async () => {
     const data = fs.readFileSync('./task5/5.2/data.txt', 'utf8');
 
-    const ranges = data.split("\n").map(line => {
+    const ranges = data.split(/\r?\n/).map(line => {
         const [start, end] = line.split("-").map(Number);
         return { start, end };
     });
