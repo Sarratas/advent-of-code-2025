@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 
-const data = fs.readFileSync('./task7/7.1/data.txt', 'utf8');
+const data = fs.readFileSync('./task7/7.2/data.txt', 'utf8');
 
 const rows = data.trim().split(/\r?\n/).map(e => e.split(''));
 const rays = new Map();
